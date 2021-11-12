@@ -9,6 +9,7 @@ import MyBadge from "./componenets/MyBadge"
 import SingleBook from "./componenets/SingleBook"
 import BookList from "./componenets/BookList"
 import history from "./data/history.json"
+import CommentArea from "./componenets/CommentArea"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Wellcome />
       <SingleBook book={history[0]} />
       <BookList books={history} />
+      <CommentArea />
 
       {/* <LatestRelease /> */}
       {/* <MyFooter /> */}

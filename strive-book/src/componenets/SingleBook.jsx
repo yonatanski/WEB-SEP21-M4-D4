@@ -29,10 +29,12 @@ class SingleBook extends React.Component   {
               </Card.Text>
               <Button variant="primary">Go somewhere</Button>
              </Card.Body>
+         
           </Card>
           {
-            this.state.selected && <CommentArea/>
+            this.state.selected && <CommentArea asin={this.props.book.asin}/>
           }
+         
       </Col>
     </Row>
   </Container>
