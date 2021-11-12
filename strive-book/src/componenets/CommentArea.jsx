@@ -2,15 +2,17 @@ import { Component } from "react";
 import CommentList from "./CommentList"
 import AddComment from "./AddComment"
 import Loading from "./Loading";
+import Error from "./Error";
 
 
 class CommentArea extends Component{
     state ={
         comments:  [],
-        isLoading :true 
+        isLoading :true ,
+        isError :false,
     }
 
-  componentDidMount =async()=>{
+  componentDidMount = async()=>{
     try {
         let response  = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
             headers: {
@@ -19,14 +21,14 @@ class CommentArea extends Component{
             })
           if(response.ok){
              let comments = await  response.json ()
-             this.setState({comments:comments, isLoading:false})
+             this.setState({comments:comments, isLoading:false ,isError :false})
             }else{
                 console.log("error")
-                this.setState({ isLoading:false})
+                this.setState({ isLoading:false,isError :true})
             }
     } catch (error) {
         console.log("error")
-        this.setState({ isLoading:false})
+        this.setState({ isLoading:false , isError :true})
     }
 
   }
@@ -35,6 +37,7 @@ class CommentArea extends Component{
     render (){
         return <div>
              {this.state.isLoading && <Loading/>}
+             {this.state.isError && <Error/>}
             <AddComment asin={this.props.asin}/>
            
             <CommentList commentsTodisplay={this.state.comments}/>

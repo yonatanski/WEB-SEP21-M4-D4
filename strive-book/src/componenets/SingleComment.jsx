@@ -26,7 +26,7 @@ try {
 const SingleComment =({comment}) =>(
     <ListGroup.Item key={comment._id}>
       {comment.comment}
-      <Button variant ="danger" className="ml-2" onClick={()=>deletecomment(comment._id)}> D</Button>
+      <Button variant ="danger" className="ml-2" onClick={()=>deletecomment(comment._id)}> Delete</Button>
   </ListGroup.Item>
 )
 export default SingleComment ;
